@@ -1,7 +1,7 @@
 import unittest
 from unittest.mock import patch
 import pyautogui
-from hearthstone import click_play_button, click_play_button_by_image
+from hearthstone import click_play_button, click_play_button_by_image, choose_opponent
 
 class TestClickPlayButton(unittest.TestCase):
     @patch('pyautogui.click')
@@ -28,20 +28,15 @@ class TestClickPlayButton(unittest.TestCase):
         # ボタンの中央をクリックしたかを確認
         mock_click.assert_called_once_with(125, 225) # 中央 (x + width/2, y + height/2)
         
-    # @patch('pyautogui.click')
-    # @patch('pyautogui.locateOnScreen')
-    # def test_choose_oppenent(self, mock_locate, mock_click):
-    #     # ボタンの画像位置をモック
-    #     mock_locate.return_value = (100, 200, 50, 50) # ボタンの座標(x, y, width, height)
+    @patch('pyautogui.click')
+    @patch('pyautogui.locateOnScreen')
+    def test_choose_oppenent(self, mock_locate, mock_click):
+        mock_locate.return_value = (100, 200, 50, 50) # ボタンの座標(x, y, width, height)
         
-    #     # 実行
-    #     choose_oppenent('play_button.')
+        choose_opponent('data/oppenent.png')
 
-    #     # pyautogui.locateOnScreenが正しく呼び出されたかを確認
-    #     mock_locate.assert_called_once_with('play_button.png', confidence=0.8)
-
-    #     # ボタンの中央をクリックしたかを確認
-    #     mock_click.assert_called_once_with(125, 225) # 中央 (x + width/2, y + height/2)
+        mock_locate.assert_called_once_with('data/play_button.png', confidence=0.8)
+        mock_click.assert_called_once_with(125, 225) # 中央 (x + width/2, y + height/2)
         
         
 if __name__ == '__main__':

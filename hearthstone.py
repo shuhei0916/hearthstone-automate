@@ -14,6 +14,9 @@ def click_play_button_by_image(image_path):
         pyautogui.click(x + width / 2, y + height / 2)
 
 
+def choose_opponent(image_path):
+    pass
+
 def main():
     click_play_button_by_image('data/play_button.png')
         

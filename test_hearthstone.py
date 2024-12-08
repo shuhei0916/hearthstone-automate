@@ -23,7 +23,7 @@ class TestClickPlayButton(unittest.TestCase):
         click_play_button_by_image('play_button.png')
 
         # pyautogui.locateOnScreenが正しく呼び出されたかを確認
-        mock_locate.assert_called_once_with('play_button.png')
+        mock_locate.assert_called_once_with('play_button.png', confidence=0.8)
 
         # ボタンの中央をクリックしたかを確認
         mock_click.assert_called_once_with(125, 225) # 中央 (x + width/2, y + height/2)

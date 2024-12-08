@@ -20,14 +20,29 @@ class TestClickPlayButton(unittest.TestCase):
         mock_locate.return_value = (100, 200, 50, 50) # ボタンの座標(x, y, width, height)
         
         # 実行
-        click_play_button_by_image('play_button.png')
+        click_play_button_by_image('data/play_button.png')
 
         # pyautogui.locateOnScreenが正しく呼び出されたかを確認
-        mock_locate.assert_called_once_with('play_button.png', confidence=0.8)
+        mock_locate.assert_called_once_with('data/play_button.png', confidence=0.8)
 
         # ボタンの中央をクリックしたかを確認
         mock_click.assert_called_once_with(125, 225) # 中央 (x + width/2, y + height/2)
+        
+    # @patch('pyautogui.click')
+    # @patch('pyautogui.locateOnScreen')
+    # def test_choose_oppenent(self, mock_locate, mock_click):
+    #     # ボタンの画像位置をモック
+    #     mock_locate.return_value = (100, 200, 50, 50) # ボタンの座標(x, y, width, height)
+        
+    #     # 実行
+    #     choose_oppenent('play_button.')
 
+    #     # pyautogui.locateOnScreenが正しく呼び出されたかを確認
+    #     mock_locate.assert_called_once_with('play_button.png', confidence=0.8)
+
+    #     # ボタンの中央をクリックしたかを確認
+    #     mock_click.assert_called_once_with(125, 225) # 中央 (x + width/2, y + height/2)
+        
         
 if __name__ == '__main__':
     unittest.main()

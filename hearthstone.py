@@ -12,7 +12,20 @@ def click_button_by_image(image_path):
         x, y, width, height = location
         # ボタンの中央をクリック
         pyautogui.click(x + width / 2, y + height / 2)
-
+        
+        
+def wait_for_image(image_path, timeout=30):
+    start_time = time.time()
+    while True:
+        try:
+            location = pyautogui.locateOnScreen(image_path, confidence=0.8)
+            if location:
+                return location
+        except pyautogui.ImageNotFoundException:
+            pass
+        if time.time() - start_time > timeout:
+            raise TimeoutError(f'Timeout reached while waiting for {image_path}')
+        time.sleep(0.5)
 
 def main():
     # マッチの開始処理

@@ -8,7 +8,7 @@
 
 
 ## ゲームの開始
-- [ ] 自分の手番かどうかを確認check_turn_button
+- [ ] 自分の手番かどうかを確認するcheck_turn_buttonを定義
     - [ ] turn_button = greenの時はclickしてターンエンド->自分の手番になるのを待つ
     - [ ] turn_button = yellowの時（自分のターンかつ、やれることがある）とき、プレイ
 
@@ -22,4 +22,5 @@
 
 ## utilities
 - [ ] 複数ディスプレイに対応させる
+    - [ ] pyautoguiのみでは対応できなさそう、win32apiなるlibraryのインポートが必要みたいなので後回し。
 - [ ] 複数解像度に対応させる。
